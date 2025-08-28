@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterWeatherApi.Web", "BetterWeatherApi\BetterWeatherApi.Web.csproj", "{454AB358-BFA3-40E2-8289-B42D2FB98083}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterWeatherApi.Logic", "BetterWeatherApi.Logic\BetterWeatherApi.Logic.csproj", "{3B535955-D18D-42CD-AD3F-81530F58F5EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterWeatherApi.Data", "BetterWeatherApi.Data\BetterWeatherApi.Data.csproj", "{1F29E6B4-0398-4A56-AE02-8CD1F94BADFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterWeatherApi.Domain", "BetterWeatherApi.Domain\BetterWeatherApi.Domain.csproj", "{FC1A6F88-779A-48FE-826D-334939BC8559}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{454AB358-BFA3-40E2-8289-B42D2FB98083}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{454AB358-BFA3-40E2-8289-B42D2FB98083}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{454AB358-BFA3-40E2-8289-B42D2FB98083}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{454AB358-BFA3-40E2-8289-B42D2FB98083}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B535955-D18D-42CD-AD3F-81530F58F5EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B535955-D18D-42CD-AD3F-81530F58F5EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B535955-D18D-42CD-AD3F-81530F58F5EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B535955-D18D-42CD-AD3F-81530F58F5EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F29E6B4-0398-4A56-AE02-8CD1F94BADFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F29E6B4-0398-4A56-AE02-8CD1F94BADFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F29E6B4-0398-4A56-AE02-8CD1F94BADFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F29E6B4-0398-4A56-AE02-8CD1F94BADFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC1A6F88-779A-48FE-826D-334939BC8559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC1A6F88-779A-48FE-826D-334939BC8559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC1A6F88-779A-48FE-826D-334939BC8559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC1A6F88-779A-48FE-826D-334939BC8559}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {43EE69BD-1FF2-4E8A-AADE-5C56978D37B7}
+	EndGlobalSection
+EndGlobal

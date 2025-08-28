@@ -15,7 +15,5 @@ public class HourlyForecastModel
     public int WindDirection { get; set; }
     public float PressureSurfaceLevel { get; set; }
     public int WeatherCode { get; set; }
-    public DateTime SunriseTime { get; set; }
-    public DateTime SunsetTime { get; set; }
     public DateTime Time { get; set; }
 }

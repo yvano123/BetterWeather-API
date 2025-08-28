@@ -83,7 +83,7 @@ public class WeatherService : IWeatherService
             entity.Location = location;
 
             _context.HourlyForecasts.Add(entity);
-            await _context.SaveChangesAsync();
+
         }
 
         foreach (var daily in forecast.Timelines.Daily)
@@ -95,8 +95,8 @@ public class WeatherService : IWeatherService
             entity.Location = location;
 
             _context.DailyForecasts.Add(entity);
-            await _context.SaveChangesAsync();
         }
+            await _context.SaveChangesAsync();
     }
 
     public HourlyForecastModel GetLatestWeather(string location)

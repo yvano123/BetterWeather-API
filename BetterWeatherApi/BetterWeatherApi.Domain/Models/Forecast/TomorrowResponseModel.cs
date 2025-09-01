@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BetterWeatherApi.Domain.Models.Forecast;
 
 
-public class ForecastResponseModel
+public class TomorrowResponseModel
 {
     public Timelines Timelines { get; set; }
     public Location Location { get; set; }

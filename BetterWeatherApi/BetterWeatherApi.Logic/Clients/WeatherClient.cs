@@ -11,7 +11,7 @@ namespace BetterWeatherApi.Logic.Clients;
 
 public interface IWeatherClient 
 {
-    public Task<ForecastResponseModel> GetForecast(string location);
+    public Task<TomorrowResponseModel> GetForecast(string location);
 }
 
 public class WeatherClient:IWeatherClient
@@ -26,7 +26,7 @@ public class WeatherClient:IWeatherClient
         _apiKey = apiKey;
     }
 
-    public async Task<ForecastResponseModel> GetForecast(string location)
+    public async Task<TomorrowResponseModel> GetForecast(string location)
     {
         var response  = await _client.GetAsync($"weather/forecast?location={location.Replace(" ", "%20")}&apikey={_apiKey}");
 
@@ -35,7 +35,7 @@ public class WeatherClient:IWeatherClient
             return null;
         }
         var json = await response.Content.ReadAsStringAsync();
-        var models = await response.Content.ReadFromJsonAsync<ForecastResponseModel>();
+        var models = await response.Content.ReadFromJsonAsync<TomorrowResponseModel>();
 
         return models;
     }

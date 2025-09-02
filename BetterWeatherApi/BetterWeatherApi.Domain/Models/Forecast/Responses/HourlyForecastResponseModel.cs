@@ -18,7 +18,8 @@ public class HourlyForecastResponseModel
     public float PressureSurfaceLevel { get; set; }
     public int WeatherCode { get; set; }
     public string WeatherMessage { get; set; }
-    public string WeatherIconUrlNight { get; set; }
-    public string WeatherIconUrlDay { get; set; }
+    public string WeatherIconUrl { get; set; }
     public DateTime Time { get; set; }
+    public bool Daytime { get; set; }
+
 }

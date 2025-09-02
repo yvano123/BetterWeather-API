@@ -21,9 +21,9 @@ namespace BetterWeatherApi.Web.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<IActionResult> GetCurrentWeather(string location)
+        public async Task<IActionResult> GetCurrentWeather(string location, int hour)
         {
-            var weatherData = await _weatherService.GetCurrentWeather(location);
+            var weatherData = await _weatherService.GetCurrentWeather(location, hour);
 
             if (weatherData != null)
             {

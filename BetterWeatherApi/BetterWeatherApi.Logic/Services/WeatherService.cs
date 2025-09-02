@@ -1,23 +1,16 @@
 ﻿using BetterWeatherApi.Logic.Clients;
 using BetterWeatherApi.Domain.Models.Forecast;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BetterWeatherApi.Data;
-using BetterWeatherApi.Domain.Mappers;
 using AutoMapper;
 using BetterWeatherApi.Data.Entities;
 using BetterWeatherApi.Domain.Models.Forecast.Responses;
-using System.Runtime.CompilerServices;
 
 namespace BetterWeatherApi.Logic.Services;
 
 public interface IWeatherService
 {
     public Task<List<DailyForecastModel>> GetWeekForecast(string location);
-    public Task<HourlyForecastModel> GetCurrentWeather(string location);
+    public Task<HourlyForecastModel> GetCurrentWeather(string location, int time);
     public HourlyForecastResponseModel InsertAdditionalWeatherData(HourlyForecastResponseModel model, string host);
     public List<DailyForecastResponseModel> InsertAdditionalWeatherData(List<DailyForecastResponseModel> models, string host);
 }
@@ -59,7 +52,7 @@ public class WeatherService : IWeatherService
         return _mapper.Map<List<DailyForecastModel>>(days);
     }
 
-    public async Task<HourlyForecastModel> GetCurrentWeather(string location)
+    public async Task<HourlyForecastModel> GetCurrentWeather(string location, int time)
     {
         TomorrowResponseModel forecast;
         HourlyForecastEntity hour;
@@ -68,7 +61,7 @@ public class WeatherService : IWeatherService
         {
             if(_context.HourlyForecasts.OrderByDescending(x => x.Time).FirstOrDefault(x => x.Location == location)?.LastRequest.AddMinutes(30) > DateTime.Now)
             {
-                hour = _context.HourlyForecasts.OrderByDescending(x => x.Time).First(x => x.Location == location);
+                hour = _context.HourlyForecasts.OrderByDescending(x => x.Time).First(x => x.Location == location && x.Time.Hour <= time && x.Time.Date == DateTime.Now.Date);
                 return _mapper.Map<HourlyForecastModel>(hour);
             }
         }
@@ -78,7 +71,7 @@ public class WeatherService : IWeatherService
             return default;
         }
 
-        hour = _context.HourlyForecasts.OrderByDescending(x => x.Time).First(x => x.Location == location);
+        hour = _context.HourlyForecasts.OrderByDescending(x => x.Time).First(x => x.Location == location && x.Time.Hour <= time && x.Time.Date == DateTime.Now.Date);
         return _mapper.Map<HourlyForecastModel>(hour);
     }
 
@@ -119,26 +112,21 @@ public class WeatherService : IWeatherService
     public HourlyForecastResponseModel InsertAdditionalWeatherData(HourlyForecastResponseModel model, string host)
     {
         model.WeatherMessage = WeatherCodes.All.FirstOrDefault(x => x.Code == model.WeatherCode)?.Description ?? "Unknown weather";
+        int timeOfDay = model.Time.Hour > 19 || model.Time.Hour < 6? 1 : 0;
 
-        string dayPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "WeatherIcons", model.WeatherCode.ToString()+"0.png");
-        string nightPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "WeatherIcons", model.WeatherCode.ToString() + "1.png");
+        model.Daytime = timeOfDay == 0? true:false;
 
-        bool dayExists = false;
+        string iconPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "WeatherIcons", model.WeatherCode.ToString() + timeOfDay + ".png");
 
-        if (File.Exists(dayPath)) 
+        if (File.Exists(iconPath)) 
         {
-            model.WeatherIconUrlDay = host+$"/WeatherIcons/{model.WeatherCode.ToString()}0.png";
-            dayExists = true;
+            model.WeatherIconUrl = host+$"/WeatherIcons/{model.WeatherCode.ToString()}{timeOfDay}.png";
+        }
+        else
+        {
+            model.WeatherIconUrl = host + $"/WeatherIcons/{model.WeatherCode.ToString()}0.png";
         }
 
-        if (File.Exists(nightPath))
-        {
-            model.WeatherIconUrlNight = host + $"/WeatherIcons/{model.WeatherCode.ToString()}1.png";
-        }
-        else if (dayExists)
-        {
-            model.WeatherIconUrlNight = host + $"/WeatherIcons/{model.WeatherCode.ToString()}0.png";
-        }
 
         return model;
     }

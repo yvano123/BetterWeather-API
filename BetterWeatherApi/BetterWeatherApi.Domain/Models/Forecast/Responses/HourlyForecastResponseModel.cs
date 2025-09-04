@@ -19,7 +19,10 @@ public class HourlyForecastResponseModel
     public int WeatherCode { get; set; }
     public string WeatherMessage { get; set; }
     public string WeatherIconUrl { get; set; }
+    public DateTime SunriseTime { get; set; }
+    public DateTime SunsetTime { get; set; }
     public DateTime Time { get; set; }
     public bool Daytime { get; set; }
+    public string Location { get; set; }
 
 }

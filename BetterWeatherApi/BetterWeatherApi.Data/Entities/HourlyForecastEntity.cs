@@ -20,4 +20,5 @@ public class HourlyForecastEntity:BaseEntity
     public DateTime Time { get; set; }
     public string Location { get; set; }
     public DateTime LastRequest { get; set; } = DateTime.Now;
+
 }

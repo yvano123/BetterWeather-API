@@ -28,7 +28,7 @@ namespace BetterWeatherApi.Web.Controllers
             if (weatherData != null)
             {
                 var response = _mapper.Map<HourlyForecastResponseModel>(weatherData);
-
+                response.Location = location.Replace("\"", "");
                 var host = $"{Request.Scheme}://{Request.Host}";
                 response = _weatherService.InsertAdditionalWeatherData(response, host);
                 return Ok(response);

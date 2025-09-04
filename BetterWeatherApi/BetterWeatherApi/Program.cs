@@ -20,7 +20,13 @@ options.AddPolicy("CorsPolicy", policy =>
     builder.Services.AddScoped<IWeatherClient>(prov =>
     {
         HttpClient client = new();
-        return new WeatherClient(builder.Configuration.GetValue<string>("apiKey") ?? "", client);
+        return new WeatherClient(builder.Configuration.GetValue<string>("TomorrowApiKey") ?? "", client);
+    });
+
+    builder.Services.AddScoped<ICityImageClient>(prov =>
+    {
+        HttpClient client = new();
+        return new CityImageClient(builder.Configuration.GetValue<string>("imageApiKey") ?? "", client);
     });
     builder.Services.AddScoped<IWeatherService, WeatherService>();
     builder.Services.AddAutoMapper(typeof(AppMapper));

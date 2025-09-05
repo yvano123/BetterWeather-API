@@ -15,6 +15,13 @@ public class DailyForecastResponseModel
     public int HumidityAvg { get; set; }
     [JsonPropertyName("WindDirection")]
     public int WindDirectionAvg { get; set; }
+    [JsonPropertyName("WindSpeed")]
+
+    public float WindSpeedAvg { get; set; }
+    [JsonPropertyName("UvIndex")]
+
+    public int UvIndexMax { get; set; }
+
     [JsonPropertyName("Pressure")]
     public float PressureSurfaceLevelAvg { get; set; }
     [JsonPropertyName("WeatherCode")]

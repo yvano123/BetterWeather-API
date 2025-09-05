@@ -12,6 +12,8 @@ public class DailyForecastModel
     public float TemperatureMin { get; set; }
     public int HumidityAvg { get; set; }
     public int WindDirectionAvg { get; set; }
+    public float WindSpeedAvg { get; set; }
+    public int UvIndexMax;
     public float PressureSurfaceLevelAvg { get; set; }
     public int WeatherCodeMax { get; set; }
     public DateTime SunriseTime { get; set; }

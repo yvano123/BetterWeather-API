@@ -14,6 +14,8 @@ public class HourlyForecastResponseModel
     public int Humidity { get; set; }
     public int UvIndex { get; set; }
     public int WindDirection { get; set; }
+    public float WindSpeed { get; set; }
+
     [JsonPropertyName("Pressure")]
     public float PressureSurfaceLevel { get; set; }
     public int WeatherCode { get; set; }

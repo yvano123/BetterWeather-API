@@ -399,4 +399,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-BetterWeatherApi/BetterWeatherApi/appsettings.json
+# BetterWeatherApi/BetterWeatherApi/appsettings.json

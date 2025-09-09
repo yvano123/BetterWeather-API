@@ -22,8 +22,6 @@
 
 5. Install SQL Server LocalDB via the Visual Studio installer in the Individual Components tab.
 
-6. In the installer, select the **Basic** installation option.
-
 7. Restart your computer.
 
 8. Set up the database by running:  

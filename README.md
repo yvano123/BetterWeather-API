@@ -31,7 +31,7 @@
 
 9. Open the `appsettings.json` file and ensure it looks like this:
 
-    ```json
+```json
 {
   "Logging": {
     "LogLevel": {

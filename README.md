@@ -31,7 +31,7 @@
 
 9. Open the `appsettings.json` file and ensure it looks like this:
 
-    `json
+    ```json
 {
   "Logging": {
     "LogLevel": {
@@ -46,7 +46,7 @@
   "TomorrowApiKey": YOUR_TOMORROW_API_KEY,
   "ImageApiKey": YOUR_IMAGE_API_KEY
 }
-`
+```
 
 10. Fill in the fields **TomorrowApiKey** and **ImageApiKey** with the provided keys.
 
